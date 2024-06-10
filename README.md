@@ -25,6 +25,7 @@ The tools needed (other than Burp Pro) to complete the labs.
 - **Information Disclosure**: None;
 - **OAuth authentication**: None;
 - **File Upload Vulnerabilities**: ``ExifTool``;
+- **Insecure Deserialization**: ``ysoserial``, ``phpggc``;
 
 ## Roadmap
 This primary goal is to add the **Apprentice** and **Practitioner** level labs (since are the ones suggested to complete before taking the exam):
@@ -50,5 +51,11 @@ This primary goal is to add the **Apprentice** and **Practitioner** level labs (
 - [ ] HTTP Host Header Attacks Labs [X] - FMisi
 - [x] OAuth Authentication Labs
 - [x] File Upload Vulnerabilities Labs
-
-
+- [ ] JWT [X] - FMisi
+- [ ] Essential skills Labs [X] - FMisi
+- [ ] Prototype pollution Labs [X] - FMisi
+- [ ] GraphQL API vulnerabilities Labs [X] - FMisi
+- [ ] Race conditions Labs [X] - FMisi
+- [ ] NoSQL injection Labs [X] - FMisi
+- [ ] API testing Labs [X] - FMisi
+- [ ] Web LLM attacks Labs [X] - FMisi
