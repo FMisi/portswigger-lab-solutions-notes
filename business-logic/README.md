@@ -116,6 +116,10 @@ You can find your email domain name by clicking the "Email client" button.
 ## Weak isolation on dual-use endpoint
 Reference: https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-weak-isolation-on-dual-use-endpoint
 
+// Keywords:
+// new password
+// new-password-2
+// - FMisi
 <!-- omit in toc -->
 ### Solution
 1. With Burp running, log in and access your account page.
@@ -193,6 +197,8 @@ Then, click "OK". The Macro Editor opens.
 
 
 Lab: Authentication bypass via encryption oracle
+
+// HARD LAB - FMisi
 
     Log in with the "Stay logged in" option enabled and post a comment. Study the corresponding requests and responses using Burp's manual testing tools. Observe that the stay-logged-in cookie is encrypted.
     Notice that when you try and submit a comment using an invalid email address, the response sets an encrypted notification cookie before redirecting you to the blog post.

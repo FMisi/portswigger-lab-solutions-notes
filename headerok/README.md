@@ -9,3 +9,8 @@ Forwarded:
 X-Requested-With: 
 X-Forwarded-Scheme: nothttps
 
+----------------------
+
+info disc. auth. bypass ==>
+
+X-Custom-Ip-Authorization: 127.0.0.1

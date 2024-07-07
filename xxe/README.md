@@ -78,6 +78,13 @@ Reference: https://portswigger.net/web-security/xxe/blind/lab-xxe-with-out-of-ba
 In this lab a **malicious** DTD must be crafted and hosted on the exploit server and the **check stock** request must be tampered by adding a XML parameter entity. Payload in the next paragraph.
 
 <!-- omit in toc -->
+
+tags:
+
+submit feedback
+submit
+feedback
+
 ### Solution
 1. Using Burp Suite Professional, go to the Burp menu, and launch the Burp Collaborator client.
 2. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard. Leave the Burp Collaborator client window open.

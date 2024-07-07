@@ -62,6 +62,12 @@ Reference: https://portswigger.net/web-security/information-disclosure/exploitin
 ### Quick Solution
 Browse to ``/admin`` and discover that it is not available to low-privileges users. Use the ``TRACE`` method to discover that the ``X-Custom-IP-Authorization`` header is appended to the response with your IP address. Change the value of this header to ``127.0.0.1`` and now you can access the ``/admin`` page.
 
+tags:
+Admin interface only available to local users 
+local
+users
+local users
+
 <!-- omit in toc -->
 ### Solution
 1. In Burp Repeater, browse to ``GET /admin``. The response discloses that the admin panel is only accessible if logged in as an administrator, or if requested from a local IP.

