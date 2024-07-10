@@ -112,7 +112,7 @@ nothing works
     In Burp Repeater, append /admin to the absolute URL in the request line and send the request. Observe that you now have access to the admin panel, including a form for deleting users.
 
     Change the absolute URL in your request to point to /admin/delete. Copy the CSRF token from the displayed response and add it as a query parameter to your request. Also add a username parameter containing carlos. The request line should now look like this but with a different CSRF token:
-    GET https://YOUR-LAB-ID.web-security-academy.net/admin/delete?csrf=QCT5OmPeAAPnyTKyETt29LszLL7CbPop&username=carlos
+    GET https://YOUR-LAB-ID.web-security-academy.net/admin/delete?username=carlos&csrf=QCT5OmPeAAPnyTKyETt29LszLL7CbPop
     Copy the session cookie from the Set-Cookie header in the displayed response and add it to your request.
     Right-click on your request and select "Change request method". Burp will convert it to a POST request.
     Send the request to delete carlos and solve the lab.

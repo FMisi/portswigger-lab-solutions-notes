@@ -46,7 +46,7 @@ Lab: Arbitrary object injection in PHP
     In Burp Repeater, notice that you can read the source code by appending a tilde (~) to the filename in the request line.
     In the source code, notice the CustomTemplate class contains the __destruct() magic method. This will invoke the unlink() method on the lock_file_path attribute, which will delete the file on this path.
 
-CustomTemplate.php~:
+/libs/CustomTemplate.php~:
 ```php
 <?php
 

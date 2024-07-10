@@ -235,6 +235,8 @@ x=
 ## Exploiting HTTP request smuggling to bypass front-end security controls, TE.CL vulnerability
 Reference: https://portswigger.net/web-security/request-smuggling/exploiting/lab-bypass-front-end-controls-te-cl
 
+if not CL.TE...
+
 <!-- omit in toc -->
 ### Quick Solution
 This lab is divided in two parts. In the first part the goal is to access the ``/admin`` page, in the second part the goal is to delete a user. So two different requests must be sent. Payloads in the next paragraph.
@@ -442,14 +444,18 @@ SMUGGLED
     Observe that every second request you send receives a 404 response, confirming that you have caused the back-end to append the subsequent request to the smuggled prefix.
 
     In Burp Repeater, create the following request, which smuggles a complete request to the back-end server. Note that the path in both requests points to a non-existent endpoint. This means that your request will always get a 404 response. Once you have poisoned the response queue, this will make it easier to recognize any other users' responses that you have successfully captured.
-    POST /x HTTP/2
-    Host: YOUR-LAB-ID.web-security-academy.net
-    Transfer-Encoding: chunked
 
-    0
+POST /x HTTP/2
+Host: YOUR-LAB-ID.web-security-academy.net
+Transfer-Encoding: chunked
 
-    GET /x HTTP/1.1
-    Host: YOUR-LAB-ID.web-security-academy.net
+0
+
+GET /x HTTP/1.1
+Host: YOUR-LAB-ID.web-security-academy.net
+
+
+
     Note
 
     Remember to terminate the smuggled request properly by including the sequence \r\n\r\n after the Host header.

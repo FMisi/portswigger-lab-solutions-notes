@@ -129,6 +129,9 @@ Reference: https://portswigger.net/web-security/access-control/lab-user-id-contr
 ## Insecure direct object references
 Reference: https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references
 
+tag:
+live chat does not comply
+
 <!-- omit in toc -->
 ### Solution
 1. Select the **Live chat** tab.

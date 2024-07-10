@@ -107,6 +107,9 @@ feedback
 ## Exploiting blind XXE to retrieve data via error messages
 Reference: https://portswigger.net/web-security/xxe/blind/lab-xxe-with-data-retrieval-via-error-messages
 
+tag:
+DTD workn't
+
 <!-- omit in toc -->
 ### Solution
 1. Click "Go to exploit server" and save the following malicious DTD file on your server:

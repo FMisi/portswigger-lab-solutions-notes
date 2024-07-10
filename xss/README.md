@@ -518,6 +518,10 @@ additional payload with " escaped:
 
 \"+alert(1)}//
 
+
+tag:
+nothing works
+
 the payload to add after productid in url if everything fails:
 
 &storeId="></select><img%20src=1%20onerror=alert(1)>
