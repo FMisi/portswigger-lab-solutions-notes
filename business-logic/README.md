@@ -198,6 +198,9 @@ Then, click "OK". The Macro Editor opens.
 
 Lab: Authentication bypass via encryption oracle
 
+tag:
+stay-logged-in cookie can't be decoded
+
 // HARD LAB - FMisi
 
     Log in with the "Stay logged in" option enabled and post a comment. Study the corresponding requests and responses using Burp's manual testing tools. Observe that the stay-logged-in cookie is encrypted.

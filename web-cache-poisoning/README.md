@@ -128,6 +128,9 @@ X-Host: your-exploit-server-id.web-security-academy.net
 ## Web cache poisoning via an unkeyed query string
 Reference: https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-unkeyed-query
 
+tag:
+Comments may take some time to appear while being moderated
+
 <!-- omit in toc -->
 ### Solution
 1. With Burp running, load the website's home page. In Burp, go to "Proxy" > "HTTP history". Find the ``GET`` request for the home page. Notice that this page is a potential cache oracle. Send the request to Burp Repeater.

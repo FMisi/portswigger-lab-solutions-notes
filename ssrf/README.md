@@ -70,11 +70,21 @@ Reference: https://portswigger.net/web-security/ssrf/lab-ssrf-filter-bypass-via-
 ## Blind SSRF with out-of-band detection
 Reference: https://portswigger.net/web-security/ssrf/blind/lab-out-of-band-detection
 
+tag:
+nothing works
+
 <!-- omit in toc -->
 ### Solution
 1. In Burp Suite Professional, go to the Burp menu and launch the Burp Collaborator client.
 2. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard. Leave the Burp Collaborator client window open.
 3. Visit a product, intercept the request in Burp Suite, and send it to Burp Repeater.
-4. Change the Referer header to use the generated Burp Collaborator domain in place of the original domain. Send the request.
+4. Change the Referer header to use the generated Burp Collaborator domain in place of the original domain. 
+
+```bash
+Referer: mb14j48ifx7d0lbjh51i595iz950tuhj.oastify.com
+```
+
+Send the request.
 5. Go back to the Burp Collaborator client window, and click "Poll now". If you don't see any interactions listed, wait a few seconds and try again, since the server-side command is executed asynchronously.
 6. You should see some DNS and HTTP interactions that were initiated by the application as the result of your payload.
+

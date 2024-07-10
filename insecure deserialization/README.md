@@ -46,6 +46,49 @@ Lab: Arbitrary object injection in PHP
     In Burp Repeater, notice that you can read the source code by appending a tilde (~) to the filename in the request line.
     In the source code, notice the CustomTemplate class contains the __destruct() magic method. This will invoke the unlink() method on the lock_file_path attribute, which will delete the file on this path.
 
+CustomTemplate.php~:
+```php
+<?php
+
+class CustomTemplate {
+    private $template_file_path;
+    private $lock_file_path;
+
+    public function __construct($template_file_path) {
+        $this->template_file_path = $template_file_path;
+        $this->lock_file_path = $template_file_path . ".lock";
+    }
+
+    private function isTemplateLocked() {
+        return file_exists($this->lock_file_path);
+    }
+
+    public function getTemplate() {
+        return file_get_contents($this->template_file_path);
+    }
+
+    public function saveTemplate($template) {
+        if (!isTemplateLocked()) {
+            if (file_put_contents($this->lock_file_path, "") === false) {
+                throw new Exception("Could not write to " . $this->lock_file_path);
+            }
+            if (file_put_contents($this->template_file_path, $template) === false) {
+                throw new Exception("Could not write to " . $this->template_file_path);
+            }
+        }
+    }
+
+    function __destruct() {
+        // Carlos thought this would be a good idea
+        if (file_exists($this->lock_file_path)) {
+            unlink($this->lock_file_path);
+        }
+    }
+}
+
+?>
+```
+
     In Burp Decoder, use the correct syntax for serialized PHP data to create a CustomTemplate object with the lock_file_path attribute set to /home/carlos/morale.txt. Make sure to use the correct data type labels and length indicators. The final object should look like this:
     O:14:"CustomTemplate":1:{s:14:"lock_file_path";s:23:"/home/carlos/morale.txt";}
     Base64 and URL-encode this object and save it to your clipboard.

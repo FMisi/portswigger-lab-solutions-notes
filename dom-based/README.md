@@ -42,6 +42,16 @@ When the iframe loads, the ``postMessage()`` method sends a web message to the h
 ## DOM XSS using web messages and a JavaScript URL
 Reference: https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages-and-a-javascript-url
 
+tag:
+<script>
+                        window.addEventListener('message', function(e) {
+                            var url = e.data;
+                            if (url.indexOf('http:') > -1 || url.indexOf('https:') > -1) {
+                                location.href = url;
+                            }
+                        }, false);
+                    </script>
+
 <!-- omit in toc -->
 ### Solution
 1. Notice that the home page contains an ``addEventListener()`` call that listens for a web message. The JavaScript contains a flawed ``indexOf()`` check that looks for the strings "``http:``" or "``https:``" anywhere within the web message. It also contains the sink ``location.href``.

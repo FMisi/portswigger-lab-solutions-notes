@@ -91,6 +91,10 @@ Lab: Routing-based SSRF
 
 Lab: SSRF via flawed request parsing
 
+tag:
+
+nothing works
+
     Send the GET / request that received a 200 response to Burp Repeater and study the lab's behavior. Observe that the website validates the Host header and blocks any requests in which it has been modified.
 
     Observe that you can also access the home page by supplying an absolute URL in the request line as follows:

