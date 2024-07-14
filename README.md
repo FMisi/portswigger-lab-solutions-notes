@@ -26,6 +26,8 @@ The tools needed (other than Burp Pro) to complete the labs.
 - **OAuth authentication**: None;
 - **File Upload Vulnerabilities**: ``ExifTool``;
 - **Insecure Deserialization**: ``ysoserial``, ``phpggc``;
+- **JWT**: ``hashcat``;
+- **Misc**: None;
 
 ## Roadmap
 This primary goal is to add the **Apprentice** and **Practitioner** level labs (since are the ones suggested to complete before taking the exam):
