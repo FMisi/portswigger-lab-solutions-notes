@@ -30,12 +30,12 @@ The tools needed (other than Burp Pro) to complete the labs.
 - **Misc**: None;
 
 ## Roadmap
-This primary goal is to add the **Apprentice** and **Practitioner** level labs (since are the ones suggested to complete before taking the exam):
+The primary goal is to add the **Apprentice** and **Practitioner** level labs (since are the ones suggested to complete before taking the exam):
 - [x] SQL Injection Labs
 - [x] XSS Labs
 - [x] CSRF Labs
 - [x] Clickjacking Labs
-- [x] DOM-based vulnerabilities Labs
+- [x] DOM-based Vulnerabilities Labs
 - [x] CORS Labs
 - [x] XXE Injection Labs
 - [x] SSRF Labs
@@ -54,10 +54,11 @@ This primary goal is to add the **Apprentice** and **Practitioner** level labs (
 - [x] OAuth Authentication Labs
 - [x] File Upload Vulnerabilities Labs
 - [ ] JWT [X] - FMisi
-- [ ] Essential skills Labs [X] - FMisi
-- [ ] Prototype pollution Labs [X] - FMisi
-- [ ] GraphQL API vulnerabilities Labs [X] - FMisi
-- [ ] Race conditions Labs [X] - FMisi
-- [ ] NoSQL injection Labs [X] - FMisi
-- [ ] API testing Labs [X] - FMisi
-- [ ] Web LLM attacks Labs [X] - FMisi
+- [ ] Essential Skills Labs [X] - FMisi
+- [ ] Prototype Pollution Labs [X] - FMisi
+- [ ] GraphQL API Vulnerabilities Labs [X] - FMisi
+- [ ] Race Conditions Labs [X] - FMisi
+- [ ] NoSQL Injection Labs [X] - FMisi
+- [ ] API Testing Labs [X] - FMisi
+- [ ] Web LLM Attacks Labs [X] - FMisi
+- [ ] Web Cache Deception Labs [X] - FMisi
