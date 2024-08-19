@@ -81,7 +81,7 @@ nothing works
 4. Change the Referer header to use the generated Burp Collaborator domain in place of the original domain. 
 
 ```bash
-Referer: mb14j48ifx7d0lbjh51i595iz950tuhj.oastify.com
+Referer: https://jre1z1ofvunagirgx2hfl6lff6lx9sxh.oastify.com
 ```
 
 Send the request.
