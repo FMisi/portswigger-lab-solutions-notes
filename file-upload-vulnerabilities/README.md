@@ -91,6 +91,8 @@ filename="..%2fexploit.php"
 12. In Burp's proxy history, find the GET /files/avatars/..%2fexploit.php request. Observe that Carlos's secret was returned in the response. This indicates that the file was uploaded to a higher directory in the filesystem hierarchy (/files), and subsequently executed by the server. Note that this means you can also request this file using GET /files/exploit.php.
 13. Submit the secret to solve the lab.
 
+hint: GET /files/avatars/../exploit.php in URL bar
+
 ## Web shell upload via extension blacklist bypass
 
 Reference: https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-extension-blacklist-bypass

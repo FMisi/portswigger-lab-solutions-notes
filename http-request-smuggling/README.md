@@ -1,6 +1,8 @@
 <!-- omit in toc -->
 # HTTP Request Smuggling
 
+don't forget to change protocol from HTTP 2.0 to HTTP 1.1 or vice versa when necessary
+
 <!-- omit in toc -->
 ## Table of Contents
 
@@ -159,6 +161,8 @@ The second request should receive an HTTP 404 response.
 
 ## Exploiting HTTP request smuggling to bypass front-end security controls, CL.TE vulnerability
 Reference: https://portswigger.net/web-security/request-smuggling/exploiting/lab-bypass-front-end-controls-cl-te
+
+tags: if nothing works / comes into mind
 
 <!-- omit in toc -->
 ### Quick Solution

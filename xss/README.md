@@ -181,6 +181,8 @@ An arithmetic operator (in this case the subtraction operator) is then used to s
 ## Stored DOM XSS
 Reference: https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-dom-xss-stored
 
+try this first
+
 <!-- omit in toc -->
 ### Solution
 Post a comment containing the following vector:

@@ -1,3 +1,47 @@
+Methodology:
+
+//TODO: methodology
+
+change the value of the sub claim from wiener to administrator. Send the request again
+
+change the value of the alg parameter to none. Send the request again
+
+remove the signature from the JWT, but remember to leave the trailing dot after the payload. Send the request again
+
+change back the signature.
+
+Part 1: Copy the JWT and brute-force the secret. You can do this using hashcat as follows:
+hashcat -a 0 -m 16500 <YOUR-JWT> /path/to/jwt.secrets.list
+
+Part 2 - Generate a forged signing key
+
+    Using Burp Decoder, Base64 encode the secret that you brute-forced in the previous section.
+
+    In Burp, go to the JWT Editor Keys tab and click New Symmetric Key. In the dialog, click Generate to generate a new key in JWK format. Note that you don't need to select a key size as this will automatically be updated later.
+
+    Replace the generated value for the k property with the Base64-encoded secret.
+
+    Click OK to save the key.
+
+Part 3 - Modify and sign the JWT
+
+    Go back to the GET /admin request in Burp Repeater and switch to the extension-generated JSON Web Token message editor tab.
+
+    In the payload, change the value of the sub claim to administrator
+
+    At the bottom of the tab, click Sign, then select the key that you generated in the previous section.
+
+    Make sure that the Don't modify header option is selected, then click OK. The modified token is now signed with the correct signature.
+
+    Send the request and observe that you have successfully accessed the admin panel.
+
+if not, then:
+
+
+
+
+===========================================================================================================================
+
 Lab: JWT authentication bypass via unverified signature
 
 

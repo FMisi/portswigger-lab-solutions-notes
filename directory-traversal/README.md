@@ -59,6 +59,9 @@ Reference: https://portswigger.net/web-security/file-path-traversal/lab-superflu
 ## File path traversal, validation of start of path
 Reference: https://portswigger.net/web-security/file-path-traversal/lab-validate-start-of-path
 
+tag:
+Missing parameter 'filename'
+
 <!-- omit in toc -->
 ### Solution
 1. Use Burp Suite to intercept and modify a request that fetches a product image.
