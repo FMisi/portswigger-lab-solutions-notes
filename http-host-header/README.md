@@ -64,6 +64,10 @@ Reference: https://portswigger.net/web-security/host-header/exploiting/lab-host-
 
 Lab: Routing-based SSRF
 
+tags:
+nothing works
+...but oastify Host header works
+
     Send the GET / request that received a 200 response to Burp Repeater.
     In Burp Repeater, select the Host header value, right-click and select Insert Collaborator payload to replace it with a Collaborator domain name. Send the request.
     Go to the Collaborator tab and click Poll now. You should see a couple of network interactions in the table, including an HTTP request. This confirms that you are able to make the website's middleware issue requests to an arbitrary server.

