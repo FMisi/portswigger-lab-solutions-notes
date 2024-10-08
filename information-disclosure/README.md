@@ -81,6 +81,11 @@ nothing works
 ## Information disclosure in version control history
 Reference: https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-version-control-history
 
+tags:
+nothing works
+bchecks
+host-level
+
 <!-- omit in toc -->
 ### Quick Solution
 Browse to ``/.git``, download the folder with ``wget``. Study the commits and discover that there is a commit called ``Remove admin password from config``. Look at the diff and retrieve the hardcoded password.
