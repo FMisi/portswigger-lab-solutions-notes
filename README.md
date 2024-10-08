@@ -17,7 +17,7 @@ This repo has been created to keep in a single place all the solutions of the la
 The tools needed (other than Burp Pro) to complete the labs.
 
 - **SQL Injection**: ``sqlmap``;
-- **XSS**: ``dalfox``, ``xsstrike``;
+- **XSS**: ``dalfox``;
 - **Clickjacking**: None;
 - **DOM-based**: None;
 - **CORS**: None;
@@ -30,10 +30,11 @@ The tools needed (other than Burp Pro) to complete the labs.
 - **Authentication**: None;
 - **WebSockets**: None;
 - **Web Cache Poisoning**: None;
-- **Information Disclosure**: None;
+- **Information Disclosure**: ``GitHub Desktop`` OR ``git-cola``;
 - **OAuth authentication**: None;
 - **File Upload Vulnerabilities**: ``ExifTool``;
 - **Insecure Deserialization**: ``ysoserial``, ``phpggc``;
+- **Misc**: None;
 
 ## Roadmap
 This primary goal is to add the **Apprentice** and **Practitioner** level labs (since are the ones suggested to complete before taking the exam):
@@ -67,3 +68,4 @@ This primary goal is to add the **Apprentice** and **Practitioner** level labs (
 - [ ] NoSQL injection Labs [X] - FMisi
 - [ ] API testing Labs [X] - FMisi
 - [ ] Web LLM attacks Labs [X] - FMisi
+- [ ] Web Cache Deception Labs [X] - FMisi
