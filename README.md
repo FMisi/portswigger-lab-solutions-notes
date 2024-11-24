@@ -27,7 +27,8 @@ The tools needed (other than Burp Pro) to complete the labs.
 - **Server-Side Template Injection**: None;
 - **Directory Traversal**: None;
 - **Access Control**: None;
-- **Authentication**: None;
+- **Authentication**: ``hashcat`` (Offline password cracking without using Google);
+- **JWT**: ``hashcat``;
 - **WebSockets**: None;
 - **Web Cache Poisoning**: None;
 - **Information Disclosure**: ``GitHub Desktop`` OR ``git-cola``;
