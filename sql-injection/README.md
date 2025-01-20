@@ -458,3 +458,9 @@ sqlmap where clause that might be useful:
 
 --where="username LIKE 'administrator'"
 
+
+my initial sqlmap stuff with 4 threads:
+
+python sqlmap.py -u *copy-pasted_from_curl_request_command* --threads=4 --flush-session --batch -p 'paramtotest' -dbs
+
+

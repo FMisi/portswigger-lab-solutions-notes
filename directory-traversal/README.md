@@ -125,7 +125,11 @@ c:/unattended.xml
 c:/windows/repair/sam
 c:/windows/repair/system
 
-The following log files are controllable and can be included with an evil payload to achieve a command execution
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+BONUS: The following log files are controllable and can be included with an evil payload to achieve a command execution
 
 /var/log/apache/access.log
 /var/log/apache/error.log
