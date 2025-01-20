@@ -37,6 +37,10 @@ The tools needed (other than Burp Pro) to complete the labs.
 - **Insecure Deserialization**: ``ysoserial``, ``phpggc``;
 - **Misc**: None;
 
+Content discovery is not a separate lab type.<br/>
+You can use the Burp engagement tool or a fuzzer tool such as ``ffuf`` if you are trying to discover additional content.<br/>
+However, you never need to guess folders, filenames or parameter names in the exam.
+
 ## Roadmap
 This primary goal is to add the **Apprentice** and **Practitioner** level labs (since are the ones suggested to complete before taking the exam):
 - [x] SQL Injection Labs
