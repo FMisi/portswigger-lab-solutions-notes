@@ -1,7 +1,6 @@
 X-Forwarded-Host: 
 X-Forwarded-For: 
-X-Forwarded-Proto: 
-X-Forwarded-Host: 
+X-Forwarded-Proto:  
 X-Host: 
 X-Forwarded-Server: 
 X-Http-Host-Override: 
