@@ -3,7 +3,7 @@ Identified Vulns Pic And Content Discovered Content By botesjuan.<br/>
 https://github.com/thelicato/portswigger-labs<br/>
 https://github.com/botesjuan/Burp-Suite-Certified-Practitioner-Exam-Study<br/>
 Extra Important Stuff - DingyShark's Guide:<br/>
-https://github.com/DingyShark/BurpSuiteCertifiedPractitioner#cross-origin-resource-sharing-cors--information-disclosure
+https://github.com/DingyShark/BurpSuiteCertifiedPractitioner
 <br/>
 <br/>
 # 🧪 PortSwigger Labs
